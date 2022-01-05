@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mastering_flutter/bloc_state.dart';
+import 'package:mastering_flutter/draggable_floating_action.dart';
 import 'package:mastering_flutter/multi_provider.dart';
 import 'package:mastering_flutter/provider_state.dart';
 import 'package:mastering_flutter/second_page.dart';
@@ -12,8 +14,11 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MaterialButton(
+              minWidth: 300,
+              color: Colors.blue[100],
               child: Text("Go to Second Page"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -22,6 +27,17 @@ class HomePage extends StatelessWidget {
               },
             ),
             MaterialButton(
+                minWidth: 300,
+                color: Colors.blue[100],
+                child: Text("Draggable Floating Action"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DraggableFloatingActionCustom();
+                  }));
+                }),
+            MaterialButton(
+              minWidth: 300,
+              color: Colors.blue[100],
               child: Text("Provider State Management"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -30,10 +46,22 @@ class HomePage extends StatelessWidget {
               },
             ),
             MaterialButton(
+              minWidth: 300,
+              color: Colors.blue[100],
               child: Text("Multi Provider State Management"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return MultiProviderState();
+                }));
+              },
+            ),
+            MaterialButton(
+              minWidth: 300,
+              color: Colors.blue[100],
+              child: Text("BloC Tanpa Libray"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return BlocWithoutLibrary();
                 }));
               },
             ),
