@@ -37,12 +37,14 @@ class _BlocWithoutLibraryState extends State<BlocWithoutLibrary> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+              heroTag: 'colorButton1',
               backgroundColor: Colors.amber,
               onPressed: () {
                 bloc.eventSink.add(ColorEvent.to_ember);
               }),
           SizedBox(width: 10),
           FloatingActionButton(
+            heroTag: 'colorButton2',
             onPressed: () {
               bloc.eventSink.add(ColorEvent.to_light_blue);
             },

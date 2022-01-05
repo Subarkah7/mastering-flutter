@@ -7,6 +7,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: MaterialButton(
+          color: Colors.lightBlue,
           child: Text("MASUK"),
           onPressed: () {
             Navigator.pushReplacement(context,

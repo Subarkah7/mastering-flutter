@@ -17,6 +17,7 @@ class MultiProviderState extends StatelessWidget {
         floatingActionButton: Consumer<Money>(
           builder: (context, money, _) => Consumer<Cart>(
             builder: (context, cart, _) => FloatingActionButton(
+              heroTag: 'btnCart',
               onPressed: () {
                 if (money.balance >= 500) {
                   cart.quantity += 1;
@@ -35,66 +36,78 @@ class MultiProviderState extends StatelessWidget {
           title: Text("Multi Provider"),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Balance",
-                  ),
-                  Container(
-                    height: 40,
-                    width: 200,
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.purple, width: 2)),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Consumer<Money>(
-                        builder: (context, money, _) => Text(
-                          money.balance.toString(),
-                          style: TextStyle(
-                              color: Colors.purple,
-                              fontWeight: FontWeight.w700),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Balance",
+                    ),
+                    Container(
+                      height: 40,
+                      width: 200,
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.purple, width: 2)),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Consumer<Money>(
+                          builder: (context, money, _) => Text(
+                            money.balance.toString(),
+                            style: TextStyle(
+                                color: Colors.purple,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Cart"),
+                    Container(
+                      height: 40,
+                      width: 200,
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black, width: 2)),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Consumer<Cart>(
+                          builder: (context, cart, _) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Apple (500) x " + cart.quantity.toString(),
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                (500 * cart.quantity).toString(),
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-              Container(
-                height: 40,
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.black, width: 2)),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Consumer<Cart>(
-                    builder: (context, cart, _) => Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Apple (500) x " + cart.quantity.toString(),
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          (500 * cart.quantity).toString(),
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
