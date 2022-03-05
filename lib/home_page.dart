@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mastering_flutter/bloc_state.dart';
 import 'package:mastering_flutter/draggable_floating_action.dart';
 import 'package:mastering_flutter/multi_provider.dart';
+import 'package:mastering_flutter/multi_radio_button.dart';
 import 'package:mastering_flutter/provider_state.dart';
 import 'package:mastering_flutter/second_page.dart';
 
@@ -33,6 +34,15 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return DraggableFloatingActionCustom();
+                  }));
+                }),
+            MaterialButton(
+                minWidth: 300,
+                color: Colors.blue[100],
+                child: Text("Multiple Radio Button"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MultiRadioButton();
                   }));
                 }),
             MaterialButton(
