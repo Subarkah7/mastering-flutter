@@ -11,7 +11,7 @@ class _MultiRadioButtonState extends State<MultiRadioButton> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       for (int i = 0; i < 3; i++) {
